@@ -1,6 +1,23 @@
 import React from 'react';
 import { useDispatch} from 'react-redux';
 import { login,logout } from '../features/user'
+import styled, { css } from 'styled-components'
+
+const Button = styled.button`
+  background: transparent;
+  border-radius: 3px;
+  border: 2px solid palevioletred;
+  color: palevioletred;
+  margin: 0 1em;
+  padding: 0.25em 1em;
+
+  ${props =>
+    props.primary &&
+    css`
+      background: palevioletred;
+      color: white;
+    `};
+`
 
 function Login() {
 
@@ -9,7 +26,7 @@ function Login() {
 
   return (
     <div>
-        <button 
+        <Button 
           onClick={ () => {
             dispatch( login(
               //This is the payload object!!
@@ -22,8 +39,8 @@ function Login() {
           }}
         >
           Login
-        </button>
-        <button 
+        </Button>
+        <Button 
           onClick={ () => {
             dispatch( logout(
               //This *would* be the payload object!!         
@@ -33,7 +50,7 @@ function Login() {
           }}
         >
           LOGOUT
-        </button>
+        </Button>
     </div>
   )
 }
